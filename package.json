@@ -7,7 +7,8 @@
   "private": true,
   "workspaces": ["lib", "demo"],
   "scripts": {
+    "dev": "yarn && cd ./lib && yarn run build && cd .. && npx concurrently -n watch-js,watch-css,watch-node \"yarn run lib\" \"yarn run demo\"",
     "lib": "cd ./lib && yarn run start",
-    "demo": "cd ./demo && yarn run dev"
+    "demo": "cd ./demo && yarn run dev --open"
   }
 }
