@@ -66,11 +66,11 @@ export const promptUserProject = async () => {
     return project;
 }
 
-const copyTemplate = (projectPath: string) => {
+const copyTemplate = (projectPath: string, currentPath: string) => {
 
     try {
         const templatePath = __dirname + '\\..\\vite-react-ubundle';
-        
+
         fs.cpSync(templatePath, projectPath, {
             recursive: true,
         })
@@ -94,7 +94,7 @@ async function main() {
     spinner.start('Creating React Project (this may take some time)');
 
     // Esecuzione dei comandi per creare il progetto AspNetCore MVC
-    copyTemplate(currentPath);
+    copyTemplate(projectPath, currentPath);
 
     spinner.stop(`Created ${project.__name}`);
 

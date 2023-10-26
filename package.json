@@ -1,16 +1,16 @@
 {
-  "name": "create-library",
-  "version": "1.0.14",
+  "name": "virtuallab-create-library",
+  "version": "1.0.8",
   "description": "Create library",
   "author": "Mariano De Luca",
   "license": "ISC",
   "scripts": {
     "build": "tsc --build",
-    "dev": "node ./dist/generate.js",
-    "deploy": "rimraf ./dist && npm run build && npm publish"
+    "dev": "node ./bin/generate.js",
+    "deploy": "yarn run build && yarn publish"
   },
   "bin": {
-    "create-library": "./dist/generate.js"
+    "virtuallab-create-library": "bin/generate.js"
   },
   "dependencies": {
     "@clack/prompts": "^0.6.3",

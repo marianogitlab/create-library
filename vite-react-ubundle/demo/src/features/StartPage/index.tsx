@@ -86,7 +86,7 @@ export const StartPage = () => {
         <Container maxWidth="md" >
             <Grid container spacing={2}>
                 <Grid xs={12} item>
-                    <StyledPageTitle variant="h1" component="div">
+                    <StyledPageTitle>
                         Colors
                     </StyledPageTitle>
                     <Box sx={{ fontSize: "1rem", color: '#5A6872', lineHeight: "1.5rem", }}>
@@ -108,7 +108,7 @@ export const StartPage = () => {
                             Learn more about these additional color accessibility guidelines in the accessibility section of the Vapor website.
                         </p>
                     </Box>
-                    <StyledThinPageTitle variant="h1" component="div">
+                    <StyledThinPageTitle>
                         Primary Colors
                     </StyledThinPageTitle>
                     <Box>
@@ -116,7 +116,7 @@ export const StartPage = () => {
                             <ColorBox {...color} key={color.name} />
                         )}
                     </Box>
-                    <StyledThinPageTitle variant="h1" component="div">
+                    <StyledThinPageTitle>
                         Secondary Colors
                     </StyledThinPageTitle>
                     <Box>
@@ -124,7 +124,7 @@ export const StartPage = () => {
                             <ColorBox {...color} key={color.name} />
                         )}
                     </Box>
-                    <StyledThinPageTitle variant="h1" component="div">
+                    <StyledThinPageTitle>
                         Background Colors
                     </StyledThinPageTitle>
                     <Box>
@@ -132,7 +132,7 @@ export const StartPage = () => {
                             <ColorBox {...color} key={color.name} />
                         )}
                     </Box>
-                    <StyledThinPageTitle variant="h1" component="div">
+                    <StyledThinPageTitle>
                         Text Colors
                     </StyledThinPageTitle>
                     <Box>
@@ -140,7 +140,7 @@ export const StartPage = () => {
                             <ColorBox {...color} key={color.name} />
                         )}
                     </Box>
-                    <StyledThinPageTitle variant="h1" component="div">
+                    <StyledThinPageTitle>
                         Status Colors
                     </StyledThinPageTitle>
                     <Box>
@@ -148,7 +148,7 @@ export const StartPage = () => {
                             <ColorBox {...color} key={color.name} />
                         )}
                     </Box>
-                    <StyledThinPageTitle variant="h1" component="div">
+                    <StyledThinPageTitle>
                         Accent Colors
                     </StyledThinPageTitle>
                     <Box>

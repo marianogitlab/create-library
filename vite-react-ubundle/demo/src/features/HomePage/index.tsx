@@ -22,10 +22,10 @@ export const HomePage = () => {
         >
             <Grid container spacing={2}>
                 <Grid xs={12} item>
-                    <StyledPageTitle variant="h1" component="div">
+                    <StyledPageTitle>
                         Vapor Design System
                     </StyledPageTitle>
-                    <StyledThinPageTitle variant="h3" component="div">
+                    <StyledThinPageTitle>
                         version: {version}
                     </StyledThinPageTitle>
                 </Grid>
