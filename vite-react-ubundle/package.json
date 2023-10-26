@@ -1,8 +1,6 @@
 {
   "name": "vds",
   "version": "1.0.0",
-  "description": "Vapor Design System for React",
-  "author": "Mariano De Luca",
   "license": "ISC",
   "private": true,
   "workspaces": ["lib", "demo"],
