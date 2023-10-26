@@ -1,0 +1,16 @@
+{
+  "name": "vds",
+  "version": "1.0.0",
+  "description": "Vapor Design System for React",
+  "author": "Mariano De Luca",
+  "license": "ISC",
+  "private": true,
+  "workspaces": ["lib", "demo"],
+  "scripts": {
+    "dev": "yarn && yarn run lib-build && yarn run crr-start",
+    "crr-start": "npx concurrently -n watch-js,watch-css,watch-node \"yarn run lib\" \"yarn run demo\"",
+    "lib-build": "cd ./lib && yarn run build",
+    "lib": "cd ./lib && yarn run start",
+    "demo": "cd ./demo && yarn run dev --open"
+  }
+}

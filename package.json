@@ -1,16 +1,27 @@
 {
-  "name": "vds",
-  "version": "1.0.0",
-  "description": "Vapor Design System for React",
+  "name": "create-library",
+  "version": "1.0.14",
+  "description": "Create library",
   "author": "Mariano De Luca",
   "license": "ISC",
-  "private": true,
-  "workspaces": ["lib", "demo"],
   "scripts": {
-    "dev": "yarn && yarn run lib-build && yarn run crr-start",
-    "crr-start": "npx concurrently -n watch-js,watch-css,watch-node \"yarn run lib\" \"yarn run demo\"",
-    "lib-build": "cd ./lib && yarn run build",
-    "lib": "cd ./lib && yarn run start",
-    "demo": "cd ./demo && yarn run dev --open"
+    "build": "tsc --build",
+    "dev": "node ./dist/generate.js",
+    "deploy": "rimraf ./dist && npm run build && npm publish"
+  },
+  "bin": {
+    "create-library": "./dist/generate.js"
+  },
+  "dependencies": {
+    "@clack/prompts": "^0.6.3",
+    "fs": "^0.0.1-security",
+    "picocolors": "^1.0.0",
+    "rimraf": "^5.0.1",
+    "shelljs": "^0.8.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
   }
 }
