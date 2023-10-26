@@ -23,6 +23,6 @@ This tool allows you to quickly create React libraries using Vite and TypeScript
 
 To verify if the tool works, please follow the above steps. If it works as expected, you should see a basic home page when you open the development server in your browser. 
 
-If you encounter any issues or have questions, feel free to reach out to us.
+If you encounter any issues or have questions contact me:
 
 🧪contact: m.deluca.virtualspace@gmail.com
