@@ -23,14 +23,6 @@ This tool allows you to quickly create React libraries using Vite and TypeScript
 
 To verify if the tool works, please follow the above steps. If it works as expected, you should see a basic home page when you open the development server in your browser. 
 
-## Version
-
-Please check the version of the tool you are using by running:
-
-```bash
-npx virtuallab-create-library --version
-```
-
 If you encounter any issues or have questions, feel free to reach out to us.
 
 🧪contact: m.deluca.virtualspace@gmail.com
