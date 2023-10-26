@@ -1,4 +1,3 @@
-```markdown
 # VirtualLab Create Library
 
 This tool allows you to quickly create React libraries using Vite and TypeScript. 
@@ -8,17 +7,17 @@ This tool allows you to quickly create React libraries using Vite and TypeScript
 1. Ensure you have Node.js and Yarn installed.
 2. Run the following command to create a new React library:
    
-   ```bash
+```bash
    npx virtuallab-create-library
-   ```
+```
 
 3. Enter a name for your library when prompted.
 
 4. From the root of the created library folder, start the development server using Yarn:
 
-   ```bash
+```bash
    yarn run dev
-   ```
+```
 
 ## Verification
 
@@ -33,6 +32,5 @@ npx virtuallab-create-library --version
 ```
 
 If you encounter any issues or have questions, feel free to reach out to us.
-```
 
 🧪contact: m.deluca.virtualspace@gmail.com
