@@ -1,4 +1,4 @@
-# VirtualLab Create Library
+# Create Library
 
 This tool allows you to quickly create React libraries using Vite and TypeScript. 
 
