@@ -1,146 +1,94 @@
-import { Box, Container, Grid, Icon, Typography } from "@mui/material";
-import { version } from "../../../package.json";
+import { Box, Container, Grid, Tooltip } from "@mui/material";
+import { StyledPageTitle, StyledThinPageTitle } from "../../components/StyledPageTitle";
+import { colors } from "../../constants/palette";
+import React from "react";
+
+interface Color {
+    hex: string;
+    name: string;
+}
+
+const ColorBox: React.FC<Color> = (props) => {
+
+    const { hex, name } = props;
+
+    const handleCopyText: React.MouseEventHandler<HTMLDivElement> = (ev) => {
+
+        let text = (ev.target as HTMLDivElement)?.outerText;
+
+        if (text) {
+
+            const copyContent = async () => {
+
+                try {
+                    const type = "text/plain";
+                    var blob = new Blob([text], { type });
+                    const data = [new ClipboardItem({ [type]: blob })];
+                    await navigator.clipboard.write(data);
+                } catch (err) {
+                    console.error('Failed to copy: ', err);
+                }
+            }
+
+            copyContent();
+        } else {
+
+            console.warn('Invalid text!');
+        }
+    }
+
+    return (
+        <Box sx={{ display: 'flex', alignItems: 'start', justifyContent: 'center', gap: 2, width: 'max-content' }}>
+            <Box sx={{ border: '1px solid #eee', height: '64px', width: '96px', backgroundColor: hex }} />
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                <Box
+                    style={{
+                        color: '#005075',
+                        fontSize: "1rem",
+                        fontWeight: 700,
+                        display: "block",
+                        overflow: "hidden",
+                        maxWidth: "100%",
+                        whiteSpace: "nowrap",
+                        textOverflow: "ellipsis"
+                    }}
+                >
+                    {name}
+                </Box>
+                <Tooltip title="Copy" arrow>
+                    <Box
+                        onClick={handleCopyText}
+                        sx={{
+                            ':hover': {
+                                opacity: 0.6
+                            },
+                            fontSize: "1rem",
+                            fontWeight: 700,
+                            display: "block",
+                            overflow: "hidden",
+                            maxWidth: "100%",
+                            whiteSpace: "nowrap",
+                            textOverflow: "ellipsis",
+                            cursor: 'pointer'
+                        }}
+                    >
+                        {hex}
+                    </Box>
+                </Tooltip>
+            </Box>
+        </Box>
+    );
+}
 
 export const StartPage = () => {
 
-    const colors = {
-        primary: [
-            {
-                hex: '#0090D1',
-                name: 'RichElectricBlue'
-            },
-            {
-                hex: '#00C3EA',
-                name: 'CyanProgress'
-            },
-            {
-                hex: '#005075',
-                name: 'DarkImperialBlue'
-            },
-            {
-                hex: '#C9D9E8',
-                name: 'ColumbiaBlue'
-            },
-        ],
-        secondary: [
-            {
-                hex: '#DEF0F7',
-                name: 'Azure'
-            },
-            {
-                hex: '#B9E6F6',
-                name: 'Diamond'
-            },
-        ],
-        backgroundColor: [
-            {
-                hex: '#FFFFFF',
-                name: 'White'
-            },
-            {
-                hex: '#F2F5F8',
-                name: 'WhiteSmoke'
-            },
-            {
-                hex: '#E4EAF0',
-                name: 'AzureishWhite'
-            },
-        ],
-        text: [
-            {
-                hex: '#FFFFFF',
-                name: 'YankeesBlue'
-            },
-            {
-                hex: '#F2F5F8',
-                name: 'Cadet'
-            },
-            {
-                hex: '#E4EAF0',
-                name: 'QuickSilver'
-            },
-            {
-                hex: '#C1C1C4',
-                name: 'SilverSand'
-            },
-            {
-                hex: '#D8D8D9',
-                name: 'Gainsboro'
-            },
-            {
-                hex: '#FAFBFD',
-                name: 'GhostWhite'
-            },
-        ],
-        statusColor: [
-            {
-                hex: '#09822A',
-                name: 'LaSalleGreen'
-            },
-            {
-                hex: '#FDB927',
-                name: 'Crayola'
-            },
-            {
-                hex: '#D82829',
-                name: 'MaximumRed'
-            },
-        ],
-        accentColor: [
-            {
-                hex: '#FC4E3D',
-                name: 'OgreOdor'
-            },
-            {
-                hex: '#DA2C38',
-                name: 'RustyRed'
-            },
-            {
-                hex: '#711423',
-                name: 'Prune'
-            },
-            {
-                hex: '#00AA00',
-                name: 'IslamicGreen'
-            },
-            {
-                hex: '#0D6C80',
-                name: 'BlueSapphire'
-            },
-            {
-                hex: '#7745EC',
-                name: 'MediumSlateBlue'
-            },
-            {
-                hex: '#7745EC',
-                name: 'RoyalFuchsia'
-            },
-            {
-                hex: '#753F83',
-                name: 'MaximumPurple'
-            },
-            {
-                hex: '#361D5B',
-                name: 'RussianViolet'
-            },
-        ],
-    };
-
     return (
-        <Container
-            maxWidth="md"
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                textAlign: 'left',
-                gap: 2
-            }}
-        >
+        <Container maxWidth="md" >
             <Grid container spacing={2}>
                 <Grid xs={12} item>
-                    <Typography variant="h1" component="div" sx={{ fontSize: "3.2rem", fontWeight: 700, lineHeight: "4rem", fontFamily: 'Cairo', textAlign: 'left' }}>
+                    <StyledPageTitle variant="h1" component="div">
                         Colors
-                    </Typography>
+                    </StyledPageTitle>
                     <Box sx={{ fontSize: "1rem", color: '#5A6872', lineHeight: "1.5rem", }}>
                         <p>
                             The Vapor color palette is designed and implemented in a themable manner.
@@ -160,238 +108,52 @@ export const StartPage = () => {
                             Learn more about these additional color accessibility guidelines in the accessibility section of the Vapor website.
                         </p>
                     </Box>
-                    <Typography variant="h1" component="div" sx={{ mb: 2, fontSize: "2rem", fontWeight: 700, lineHeight: "4rem", fontFamily: 'Cairo', textAlign: 'left' }}>
+                    <StyledThinPageTitle variant="h1" component="div">
                         Primary Colors
-                    </Typography>
+                    </StyledThinPageTitle>
                     <Box>
                         {colors.primary.map(color =>
-                            <Box sx={{ display: 'flex', alignItems: 'start', justifyContent: 'center', gap: 2, width: 'max-content' }}>
-                                <Box sx={{ border: '1px solid #eee', height: '64px', width: '96px', backgroundColor: color.hex }} />
-                                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                                    <Box
-                                        style={{
-                                            color: '#005075',
-                                            fontSize: "1rem",
-                                            fontWeight: 700,
-                                            display: "block",
-                                            overflow: "hidden",
-                                            maxWidth: "100%",
-                                            whiteSpace: "nowrap",
-                                            textOverflow: "ellipsis"
-                                        }}
-                                    >
-                                        {color.name}
-                                    </Box>
-                                    <Box
-                                        style={{
-                                            fontSize: "1rem",
-                                            fontWeight: 700,
-                                            display: "block",
-                                            overflow: "hidden",
-                                            maxWidth: "100%",
-                                            whiteSpace: "nowrap",
-                                            textOverflow: "ellipsis"
-                                        }}
-                                    >
-                                        {color.hex}
-                                    </Box>
-                                </Box>
-                            </Box>
+                            <ColorBox {...color} key={color.name} />
                         )}
                     </Box>
-                    <Typography variant="h1" component="div" sx={{ mb: 2, fontSize: "2rem", fontWeight: 700, lineHeight: "4rem", fontFamily: 'Cairo', textAlign: 'left' }}>
+                    <StyledThinPageTitle variant="h1" component="div">
                         Secondary Colors
-                    </Typography>
+                    </StyledThinPageTitle>
                     <Box>
                         {colors.secondary.map(color =>
-                            <Box sx={{ display: 'flex', alignItems: 'start', justifyContent: 'center', gap: 2, width: 'max-content' }}>
-                                <Box sx={{ border: '1px solid #eee', height: '64px', width: '96px', backgroundColor: color.hex }} />
-                                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                                    <Box
-                                        style={{
-                                            color: '#005075',
-                                            fontSize: "1rem",
-                                            fontWeight: 700,
-                                            display: "block",
-                                            overflow: "hidden",
-                                            maxWidth: "100%",
-                                            whiteSpace: "nowrap",
-                                            textOverflow: "ellipsis"
-                                        }}
-                                    >
-                                        {color.name}
-                                    </Box>
-                                    <Box
-                                        style={{
-                                            fontSize: "1rem",
-                                            fontWeight: 700,
-                                            display: "block",
-                                            overflow: "hidden",
-                                            maxWidth: "100%",
-                                            whiteSpace: "nowrap",
-                                            textOverflow: "ellipsis"
-                                        }}
-                                    >
-                                        {color.hex}
-                                    </Box>
-                                </Box>
-                            </Box>
+                            <ColorBox {...color} key={color.name} />
                         )}
                     </Box>
-                    <Typography variant="h1" component="div" sx={{ mb: 2, fontSize: "2rem", fontWeight: 700, lineHeight: "4rem", fontFamily: 'Cairo', textAlign: 'left' }}>
+                    <StyledThinPageTitle variant="h1" component="div">
                         Background Colors
-                    </Typography>
+                    </StyledThinPageTitle>
                     <Box>
                         {colors.backgroundColor.map(color =>
-                            <Box sx={{ display: 'flex', alignItems: 'start', justifyContent: 'center', gap: 2, width: 'max-content' }}>
-                                <Box sx={{ border: '1px solid #eee', height: '64px', width: '96px', backgroundColor: color.hex }} />
-                                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                                    <Box
-                                        style={{
-                                            color: '#005075',
-                                            fontSize: "1rem",
-                                            fontWeight: 700,
-                                            display: "block",
-                                            overflow: "hidden",
-                                            maxWidth: "100%",
-                                            whiteSpace: "nowrap",
-                                            textOverflow: "ellipsis"
-                                        }}
-                                    >
-                                        {color.name}
-                                    </Box>
-                                    <Box
-                                        style={{
-                                            fontSize: "1rem",
-                                            fontWeight: 700,
-                                            display: "block",
-                                            overflow: "hidden",
-                                            maxWidth: "100%",
-                                            whiteSpace: "nowrap",
-                                            textOverflow: "ellipsis"
-                                        }}
-                                    >
-                                        {color.hex}
-                                    </Box>
-                                </Box>
-                            </Box>
+                            <ColorBox {...color} key={color.name} />
                         )}
                     </Box>
-                    <Typography variant="h1" component="div" sx={{ mb: 2, fontSize: "2rem", fontWeight: 700, lineHeight: "4rem", fontFamily: 'Cairo', textAlign: 'left' }}>
+                    <StyledThinPageTitle variant="h1" component="div">
                         Text Colors
-                    </Typography>
+                    </StyledThinPageTitle>
                     <Box>
                         {colors.text.map(color =>
-                            <Box sx={{ display: 'flex', alignItems: 'start', justifyContent: 'center', gap: 2, width: 'max-content' }}>
-                                <Box sx={{ border: '1px solid #eee', height: '64px', width: '96px', backgroundColor: color.hex }} />
-                                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                                    <Box
-                                        style={{
-                                            color: '#005075',
-                                            fontSize: "1rem",
-                                            fontWeight: 700,
-                                            display: "block",
-                                            overflow: "hidden",
-                                            maxWidth: "100%",
-                                            whiteSpace: "nowrap",
-                                            textOverflow: "ellipsis"
-                                        }}
-                                    >
-                                        {color.name}
-                                    </Box>
-                                    <Box
-                                        style={{
-                                            fontSize: "1rem",
-                                            fontWeight: 700,
-                                            display: "block",
-                                            overflow: "hidden",
-                                            maxWidth: "100%",
-                                            whiteSpace: "nowrap",
-                                            textOverflow: "ellipsis"
-                                        }}
-                                    >
-                                        {color.hex}
-                                    </Box>
-                                </Box>
-                            </Box>
+                            <ColorBox {...color} key={color.name} />
                         )}
                     </Box>
-                    <Typography variant="h1" component="div" sx={{ mb: 2, fontSize: "2rem", fontWeight: 700, lineHeight: "4rem", fontFamily: 'Cairo', textAlign: 'left' }}>
+                    <StyledThinPageTitle variant="h1" component="div">
                         Status Colors
-                    </Typography>
+                    </StyledThinPageTitle>
                     <Box>
                         {colors.statusColor.map(color =>
-                            <Box sx={{ display: 'flex', alignItems: 'start', justifyContent: 'center', gap: 2, width: 'max-content' }}>
-                                <Box sx={{ border: '1px solid #eee', height: '64px', width: '96px', backgroundColor: color.hex }} />
-                                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                                    <Box
-                                        style={{
-                                            color: '#005075',
-                                            fontSize: "1rem",
-                                            fontWeight: 700,
-                                            display: "block",
-                                            overflow: "hidden",
-                                            maxWidth: "100%",
-                                            whiteSpace: "nowrap",
-                                            textOverflow: "ellipsis"
-                                        }}
-                                    >
-                                        {color.name}
-                                    </Box>
-                                    <Box
-                                        style={{
-                                            fontSize: "1rem",
-                                            fontWeight: 700,
-                                            display: "block",
-                                            overflow: "hidden",
-                                            maxWidth: "100%",
-                                            whiteSpace: "nowrap",
-                                            textOverflow: "ellipsis"
-                                        }}
-                                    >
-                                        {color.hex}
-                                    </Box>
-                                </Box>
-                            </Box>
+                            <ColorBox {...color} key={color.name} />
                         )}
                     </Box>
-                    <Typography variant="h1" component="div" sx={{ mb: 2, fontSize: "2rem", fontWeight: 700, lineHeight: "4rem", fontFamily: 'Cairo', textAlign: 'left' }}>
+                    <StyledThinPageTitle variant="h1" component="div">
                         Accent Colors
-                    </Typography>
+                    </StyledThinPageTitle>
                     <Box>
                         {colors.accentColor.map(color =>
-                            <Box sx={{ display: 'flex', alignItems: 'start', justifyContent: 'center', gap: 2, width: 'max-content' }}>
-                                <Box sx={{ border: '1px solid #eee', height: '64px', width: '96px', backgroundColor: color.hex }} />
-                                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                                    <Box
-                                        style={{
-                                            color: '#005075',
-                                            fontSize: "1rem",
-                                            fontWeight: 700,
-                                            display: "block",
-                                            overflow: "hidden",
-                                            maxWidth: "100%",
-                                            whiteSpace: "nowrap",
-                                            textOverflow: "ellipsis"
-                                        }}
-                                    >
-                                        {color.name}
-                                    </Box>
-                                    <Box
-                                        style={{
-                                            fontSize: "1rem",
-                                            fontWeight: 700,
-                                            display: "block",
-                                            overflow: "hidden",
-                                            maxWidth: "100%",
-                                            whiteSpace: "nowrap",
-                                            textOverflow: "ellipsis"
-                                        }}
-                                    >
-                                        {color.hex}
-                                    </Box>
-                                </Box>
-                            </Box>
+                            <ColorBox {...color} key={color.name} />
                         )}
                     </Box>
                 </Grid>

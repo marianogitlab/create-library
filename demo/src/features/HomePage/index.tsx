@@ -4,6 +4,7 @@ import { Card } from "vds";
 import { FaConnectdevelop } from "react-icons/fa";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { StyledPageTitle, StyledThinPageTitle } from "../../components/StyledPageTitle";
 
 export const HomePage = () => {
 
@@ -21,12 +22,12 @@ export const HomePage = () => {
         >
             <Grid container spacing={2}>
                 <Grid xs={12} item>
-                    <Typography variant="h1" component="div" sx={{ fontSize: "3.2rem", fontWeight: 700, lineHeight: "4rem", fontFamily: 'Cairo', textAlign: 'left' }}>
+                    <StyledPageTitle variant="h1" component="div">
                         Vapor Design System
-                    </Typography>
-                    <Typography variant="h3" component="div" sx={{ fontSize: "1.2rem", fontWeight: 700, lineHeight: "4rem", fontFamily: 'Cairo', textAlign: 'left' }}>
+                    </StyledPageTitle>
+                    <StyledThinPageTitle variant="h3" component="div">
                         version: {version}
-                    </Typography>
+                    </StyledThinPageTitle>
                 </Grid>
                 <Grid xs={12} item>
                     <Typography variant="h5" component="div" sx={{ fontSize: "1rem", color: '#5A6872', lineHeight: "1.5rem", fontFamily: 'Roboto', textAlign: 'left' }}>
