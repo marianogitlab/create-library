@@ -15,9 +15,10 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import logoVapor from '../assets/logo-vapor.png';
 import reactVapor from '../assets/logo-react.png';
+import { useMediaQuery } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -25,6 +26,9 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
     open?: boolean;
 }>(({ theme, open }) => ({
     flexGrow: 1,
+    marginTop: '65px',
+    overflow: 'auto',
+    width: '100%',
     padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.sharp,
@@ -73,7 +77,16 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export const ApplicationLayout = () => {
 
     const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up('md'));
+    const location = useLocation();
+    const navigate = useNavigate();
+
     const [open, setOpen] = React.useState(true);
+
+    React.useEffect(() => {
+
+        setOpen(matches);
+    }, [matches]);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -84,10 +97,10 @@ export const ApplicationLayout = () => {
     };
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', width: '100%', height: '100%' }}>
             <CssBaseline />
-            <AppBar position="fixed" open={open} sx={{ backgroundColor: '#005075' }}>
-                <Toolbar>
+            <AppBar position="fixed" open={open} sx={{ backgroundColor: '#152935', height: '64px' }}>
+                <Toolbar sx={{ height: '64px' }}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -114,7 +127,7 @@ export const ApplicationLayout = () => {
                     '& .MuiDrawer-paper': {
                         width: drawerWidth,
                         boxSizing: 'border-box',
-                        backgroundColor: '#005075',
+                        backgroundColor: '#152935',
                         color: '#fff'
                     },
                 }}
@@ -130,14 +143,18 @@ export const ApplicationLayout = () => {
                 <Divider />
                 <List disablePadding>
                     <ListItem disablePadding>
-                        <ListItemButton>
+                        <ListItemButton selected={location.pathname === '/'} onClick={() => navigate("/")}>
                             <ListItemText primary="Home" />
+                        </ListItemButton>
+                    </ListItem>
+                    <ListItem disablePadding>
+                        <ListItemButton selected={location.pathname === '/start'} onClick={() => navigate("/start")}>
+                            <ListItemText primary="Getting started" />
                         </ListItemButton>
                     </ListItem>
                 </List>
             </Drawer>
             <Main open={open}>
-                <DrawerHeader />
                 <Outlet />
             </Main>
         </Box>
