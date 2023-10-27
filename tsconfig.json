@@ -3,9 +3,10 @@
     "noImplicitAny": true,
     "noEmitOnError": true,
     "removeComments": false,
-    "sourceMap": true,
+    "sourceMap": false,
     "target": "es5",
-    "strict": true
+    "strict": true,
+    "declarationMap": false
   },
   "exclude": ["./vite-react-ubundle"]
 }

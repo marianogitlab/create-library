@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -37,37 +36,42 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.promptUserProject = void 0;
 var p = require("@clack/prompts");
 var color = require("picocolors");
-var path = require("path");
-var promptUserProject_1 = require("../prompts/promptUserProject");
-var copyTemplate_1 = require("../utils/copyTemplate");
-var detokenize_1 = require("../utils/detokenize");
-function main() {
-    return __awaiter(this, void 0, void 0, function () {
-        var spinner, currentPath, project, projectPath, nextSteps;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    console.clear();
-                    spinner = p.spinner();
-                    currentPath = process.cwd();
-                    p.intro("".concat(color.cyan(' virtuallab-create-library ')));
-                    return [4 /*yield*/, (0, promptUserProject_1.promptUserProject)()];
-                case 1:
-                    project = _a.sent();
-                    projectPath = path.join(currentPath, project.__name);
-                    spinner.start('Creating Library Template');
-                    (0, copyTemplate_1.copyTemplate)(projectPath, '\\..\\vite-react-ubundle'); // Esecuzione dei comandi per copiare il template
-                    spinner.stop("Created ".concat(project.__name, " structure"));
-                    spinner.start('Finalization');
-                    (0, detokenize_1.replaceReactViteUbundleTemplatePlaceholders)(project, projectPath); // Esecuzione dei comandi per rimpiazzare i 'token' presenti nel template
-                    spinner.stop("");
-                    nextSteps = color.white("\nHere are the details of your project:\n".concat(color.green('Project Name:'), " ").concat(project.__name, "\n\nFollow the next steps to get started:\n\n> ").concat(color.cyan("From the root folder"), "\n    Run the following command:\n    yarn run dev\n"));
-                    p.outro(nextSteps);
-                    return [2 /*return*/];
-            }
-        });
+/**
+ * Richiedi le informazioni per creare un nuovo progetto
+ * @returns {Promise} Promise con le informazioni del progetto
+ */
+var promptUserProject = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var __name, project;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                console.clear();
+                p.intro("".concat(color.bgCyan(color.black(' Create App '))));
+                __name = function () {
+                    return p.text({
+                        message: 'Provide a name for your project',
+                        initialValue: 'my-react-lib',
+                        validate: function (value) {
+                            if (!value)
+                                return 'Please enter a name.';
+                        },
+                    });
+                };
+                return [4 /*yield*/, p.group({
+                        __name: __name
+                    }, {
+                        onCancel: function () {
+                            p.cancel('Operation cancelled.');
+                            process.exit(0);
+                        },
+                    })];
+            case 1:
+                project = _a.sent();
+                return [2 /*return*/, project];
+        }
     });
-}
-main().catch(console.error);
+}); };
+exports.promptUserProject = promptUserProject;

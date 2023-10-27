@@ -91,21 +91,21 @@ export const StartPage = () => {
                     </StyledPageTitle>
                     <Box sx={{ fontSize: "1rem", color: '#5A6872', lineHeight: "1.5rem", }}>
                         <p>
-                            The Vapor color palette is designed and implemented in a themable manner.
-                            The universal color variables are determined by common roles and usage; it is not based singularly on a color value (i.e. unique hex code).
-                            The same color value may be assigned to multiple variables in a theme’s palette when the values have distinctly different roles.
+                            Lorem ipsum dolor sit amlet, sitLorem ipsum dolor sit amlet.
+                            Lorem ipsum dolor sit amlet, sitLorem ipsum dolor sit amlet, sitLorem ipsum dolor sit amlet, sitLorem ipsum dolor sit amlet, sitLorem ipsum dolor sit .
+                            Lorem ipsum dolor sit amlet,  amlet, sitLorem ipsum dolor sit amlet, sitLorem ipsum dolor sit .
                         </p>
                         <p>
-                            A universal variable can also have multiple associated roles when the color is consistently used across those roles.
-                            This allows for uniform color application across themes while giving each theme the freedom to express its own individuality at a more detailed level.
+                            Lorem ipsum dolor sit amlet, sitLorem ipsum dolor sit amlet, sitLorem ipsum dolor sit amlet, sitLorem ipsum dolor sit amlet, sitLorem ipsum dolor sit .
+                            Lorem ipsum dolor sit amlet,  amlet, sitLorem ipsum dolor sit amlet, sitLorem ipsum doloramlet, sitLorem ipsum dolor sit amlet, sitLorem ipsum doloramlet, sitLorem ipsum dolor sit amlet, sitLorem ipsum dolor sit .
                         </p>
                         <p>
-                            Certain UI color combinations on Vapor must pass the new WCAG AA standards of a minimum 3:1 ratio.
-                            Vapor complies with a 4.5:1 color ratio for certain controls and all icons. In the table below are approved Vapor color combinations.
+                            Lorem ipsum dolor sit amlet, sitLorem ipsum dolor sit amlet.
+                            Lorem ipsum dolor sit amlet, sitLorem ipsum dolor sit amlet, sitLorem ipsum dolor sit amlet, sitLorem ipsum dolor sit amlet, sitLorem ipsum dolor sit .
                         </p>
                         <p>
-                            Other color accessibility concerns include color blindness and low vision users.
-                            Learn more about these additional color accessibility guidelines in the accessibility section of the Vapor website.
+                            Lorem ipsum dolor sit amlet, sitLorem ipsum dolor sit amlet.
+                            Lorem ipsum dolor sit amlet, sitLorem ipsum dolor sitLorem ipsum dolor sit amlet, sitLorem ipsum dolor sit .
                         </p>
                     </Box>
                     <StyledThinPageTitle>
