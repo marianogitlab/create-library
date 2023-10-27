@@ -16,8 +16,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import logoVapor from '../assets/logo-vapor.png';
-import reactVapor from '../assets/logo-react.png';
+import reactLogo from '../assets/logo-react.png';
 import { useMediaQuery } from '@mui/material';
 
 const drawerWidth = 240;
@@ -110,13 +109,8 @@ export const ApplicationLayout = () => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <img src={logoVapor} height={50} />
                     <Typography variant="h6" noWrap component="div" marginRight={3}>
-                        for
-                    </Typography>
-                    <img src={reactVapor} height={27} />
-                    <Typography variant="h6" noWrap component="div" marginLeft={1}>
-                        React
+                        LOGO
                     </Typography>
                 </Toolbar>
             </AppBar>
